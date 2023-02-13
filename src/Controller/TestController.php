@@ -23,4 +23,12 @@ class TestController extends AbstractController
             'controller_name' => 'TestController',
         ]);
     }
+
+    #[Route('/testFComp', name: 'app_testFC')]
+    public function indexTC(): Response
+    {
+        return $this->render('frontComp.html.twig', [
+            'controller_name' => 'TestController',
+        ]);
+    }
 }
