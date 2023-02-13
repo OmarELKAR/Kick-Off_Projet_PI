@@ -1,0 +1,72 @@
+{% extends 'backComp.html.twig' %}
+
+{% block title %}Teams{% endblock %}
+
+{% block main %}
+    <body>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Matches</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                    <li class="breadcrumb-item active">Matches</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <!-- Recent Sales -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+
+
+                <div class="card-body">
+                    <h5 class="card-title">Matches</h5>
+                    <table class="table table-borderless datatable">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Joueur Max</th>
+                            <th scope="col">Etat</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for m in matches %}
+                            <tr>
+                                <th scope="row"><a href="#">{{ m.id }}</a></th>
+                                <td>{{ m.name }}</td>
+                                <td>{{ m.Date|date("d M y h:m") }}</td>
+                                <td>{{ m.Jmax }}</td>
+                                <td>
+                                    {% if m.etat == "Ouvert" %}
+                                        <span class="badge bg-success">{{ m.etat }}</span>
+                                    {% elseif m.etat == "Privée" %}
+                                        <span class="badge bg-warning">{{ m.etat }}</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">{{ m.etat }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div><!-- End Recent Sales -->
+
+
+
+
+    </main><!-- End #main -->
+
+    </body>
+{% endblock %}
