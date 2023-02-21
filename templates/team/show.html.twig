@@ -1,0 +1,26 @@
+{% extends 'backComp.html.twig' %}
+{% block main %}
+
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Team name</th>
+            <!--<th scope="col">ban</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in teams %}
+            <tr>
+                <th scope="row">{{t.id}}</th>
+                <td>{{ t.name }}</td>
+                <td> <a class="btn btn-danger" href="{{ path('app_delete_team', {'id': t.id }) }}">Delete</a> </td>
+                <td> <a class="btn btn-success" href="{{ path('app_show_team', {'id': t.id }) }}">Show</a> </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

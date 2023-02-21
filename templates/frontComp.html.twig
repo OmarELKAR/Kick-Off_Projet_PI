@@ -31,6 +31,16 @@
                                 </ul>
                                 <!-- end social icon -->
                                 <!-- button section -->
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        {{ app.user.username }}
+                                        <li>
+                                            <div class="cart-option">
+                                                <a href="{{ path('app_logout') }}"><i class="fa fa-user-plus"></i>Logout</a>
+                                            </div>
+                                        </li>
+                                    </div>
+                                {% else %}
                                 <ul class="login">
                                     <li class="login-modal">
                                         <a href="#" class="login"><i class="fa fa-user"></i>Login</a>
@@ -41,6 +51,7 @@
                                         </div>
                                     </li>
                                 </ul>
+                                {% endif %}
                                 <!-- end button section -->
                             </div>
                         </div>

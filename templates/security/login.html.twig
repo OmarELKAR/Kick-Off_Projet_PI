@@ -1,0 +1,59 @@
+{% extends 'frontComp.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block main %}
+    <form method="post" novalidate>
+
+        <div class="w-4/5 m-auto text-center">
+            <div class="py-12 border-b border-gray-200">
+                <h1 class="text-6xl pt-12 pb-8">
+                    Login
+                </h1>
+
+                    <div class="form-group">
+                        <label for="InputUsername">Username:</label>
+                        <input
+                                type="text"
+                                value="{{ last_username }}"
+                                name="Username"
+                                id="inputUsername"
+                                placeholder="Username"
+                                autocomplete="Username"
+                                class="form-control"
+                                required
+                                autofocus
+                        >
+                    </div>
+
+
+                <div class="form-group">
+                    <label for="InputPassword"> Password:</label>
+                    <input
+                            type="password"
+                            name="password"
+                            id="inputPassword"
+                            class="form-control"
+                            autocomplete="current-password"
+                            placeholder="Password"
+                            required
+                    >
+                </div>
+
+
+
+                <input
+                        type="hidden"
+                        name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                >
+<br>
+                <button
+                        class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg w-1/5 mt-10 font-extrabold py-4 px-8 rounded-3xl"
+                        type="submit">
+                    Sign in
+                </button>
+    </div>
+    </div>
+    </form>
+{% endblock %}
