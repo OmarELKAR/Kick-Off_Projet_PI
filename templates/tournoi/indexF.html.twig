@@ -1,0 +1,40 @@
+{% extends "frontComp.html.twig" %}
+
+{% block main %}
+    <section id="contant" class="contant">
+        <div class="container">
+
+            {% block fromBlock %}
+
+            {% endblock %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Equipe</th>
+                    <th>Etat</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in tournois %}
+                    <tr>
+                        <td>{{ t.name }}</td>
+                        <td>{{ t.Date|date("d M y") }}</td>
+                        <td>{{ t.NbrEquipe }} équipes de {{ t.NbrJequipe }}</td>
+                        <td>
+                            {% if t.etat == "Ouvert" %}
+                                <span class="badge bg-success">{{ t.etat }}</span>
+                            {% elseif t.etat == "Privée" %}
+                                <span class="badge bg-warning">{{ t.etat }}</span>
+                            {% else %}
+                                <span class="badge">{{ t.etat }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

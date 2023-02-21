@@ -25,7 +25,8 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Matches</h5>
-                    <table class="table table-borderless datatable">
+                    {% block form %}{% endblock %}
+                    <table class="table datatable table-striped table-hover">
                         <thead>
                         <tr>
                             <th scope="col">id</th>
@@ -33,6 +34,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Joueur Max</th>
                             <th scope="col">Etat</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,7 +42,7 @@
                             <tr>
                                 <th scope="row"><a href="#">{{ m.id }}</a></th>
                                 <td>{{ m.name }}</td>
-                                <td>{{ m.Date|date("d M y h:m") }}</td>
+                                <td>{{ m.Date|date("d M y") }} At {{ m.time|date("H:i") }}</td>
                                 <td>{{ m.Jmax }}</td>
                                 <td>
                                     {% if m.etat == "Ouvert" %}
@@ -50,6 +52,14 @@
                                     {% else %}
                                         <span class="badge bg-danger">{{ m.etat }}</span>
                                     {% endif %}
+                                </td>
+                                <td>
+                                    <button  type="button" class="btn btn-warning">
+                                        <a style="color: #fff" href="{{ path('match_edit',{'id':m.id}) }}">Modifier</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <a style="color: #fff" href="{{ path('matchA_delete', {'id':m.id }) }}">Supprimer</a>
+                                    </button>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -1,0 +1,101 @@
+{% extends "backComp.html.twig" %}
+
+{% block main %}
+    <body>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Tournois</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path("showA_tournoi") }}">Tournois</a> </li>
+                    <li class="breadcrumb-item active">{{ t.name }} </li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+
+
+        <!-- Recent Sales -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+
+
+
+                <div class="card-body">
+                    <h5 class="card-title">Tournois</h5>
+                    <div class="pagetitle">
+                        <h1>{{ t.name }}</h1>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Date : {{ t.date|date('d M y') }}</li>
+                        <li class="list-group-item">Nombre d'equipes : {{ t.NbrEquipe }} équipes de {{ t.NbrJequipe }}</li>
+                        <li class="list-group-item">Nombre de terrains : {{ t.nbrTerrains }}</li>
+                        <li class="list-group-item">Etat :
+                            {% if t.etat == "Ouvert" %}
+                                <span class="badge bg-success">{{ t.etat }}</span>
+                            {% elseif t.etat == "Privée" %}
+                                <span class="badge bg-warning">{{ t.etat }}</span>
+                            {% else %}
+                                <span class="badge bg-danger">{{ t.etat }}</span>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    {% block form %}
+                    {% endblock %}
+                    <table class="table datatable table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Equipes</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for m in t.matches %}
+                            <tr>
+                                <th scope="row"><a href="#">{{ m.id }}</a></th>
+                                <td>{{ m.name }}</td>
+                                <td>{{ m.Date|date("d M y") }} At {{ m.time|date("H:i") }}</td>
+                                <td>{{ m.Jmax }}</td>
+                                <td>
+                                    {% if m.etat == "Ouvert" %}
+                                        <span class="badge bg-success">{{ m.etat }}</span>
+                                    {% elseif m.etat == "Privée" %}
+                                        <span class="badge bg-warning">{{ m.etat }}</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">{{ m.etat }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <button  type="button" class="btn btn-warning">
+                                        <a style="color: #fff" href="{{ path('match_edit',{'id':m.id}) }}">Modifier</a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <a style="color: #fff" href="{{ path('matchA_delete', {'id':m.id }) }}">Supprimer</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div><!-- End Recent Sales -->
+
+
+
+
+    </main><!-- End #main -->
+
+    </body>
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MatcheRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MatcheRepository::class)]
 class Matche
@@ -15,16 +16,31 @@ class Matche
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min:3, max:20)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\GreaterThan('today')]
+    #[Assert\NotBlank]
     private ?\DateTimeInterface $Date = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank]
     private ?string $etat = null;
 
     #[ORM\Column]
+    #[Assert\LessThanOrEqual(22)]
+    #[Assert\DivisibleBy(2)]
+    #[Assert\GreaterThanOrEqual(10)]
     private ?int $Jmax = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Assert\NotBlank]
+    private ?\DateTimeInterface $time = null;
+
+    #[ORM\ManyToOne(inversedBy: 'matches')]
+    private ?Tournoi $tournoi = null;
 
     public function getId(): ?int
     {
@@ -78,4 +94,29 @@ class Matche
 
         return $this;
     }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(\DateTimeInterface $time): self
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    public function getTournoi(): ?Tournoi
+    {
+        return $this->tournoi;
+    }
+
+    public function setTournoi(?Tournoi $tournoi): self
+    {
+        $this->tournoi = $tournoi;
+
+        return $this;
+    }
+
 }

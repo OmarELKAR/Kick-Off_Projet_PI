@@ -1,0 +1,44 @@
+{% extends "frontComp.html.twig" %}
+
+{% block main %}
+    <section id="contant" class="contant">
+        <div class="container">
+
+            {% block fromBlock %}
+                <ul class="login">
+                    <li class="login-modal">
+                        <a href="{{ path('add_match') }}"><i class="fa fa-user-plus"></i>Créer match</a>
+                    </li>
+                </ul>
+            {% endblock %}
+            <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Joueur</th>
+            <th>Etat</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in matches %}
+            <tr>
+                <td>{{ m.name }}</td>
+                <td>{{ m.Date|date("d M y") }} At {{ m.time|date("H:i") }}</td>
+                <td>{{ m.Jmax }}</td>
+                <td>
+                    {% if m.etat == "Ouvert" %}
+                        <span class="badge bg-success">{{ m.etat }}</span>
+                    {% elseif m.etat == "Privée" %}
+                        <span class="badge bg-warning">{{ m.etat }}</span>
+                    {% else %}
+                        <span class="badge">{{ m.etat }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </section>
+{% endblock %}

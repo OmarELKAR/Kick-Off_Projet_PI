@@ -1,0 +1,36 @@
+{% extends "match/index.html.twig" %}
+
+{% block form %}
+    <div class="container-fluid">
+        {{ form_start(f) }}
+
+        <div class="form-group">
+            {{ form_label(f.name)}}:
+            {{ form_widget(f.name, {'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.name) }}
+
+
+            {{ form_label(f.Date)}}:
+            {{ form_widget(f.Date, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(f.Date) }}
+
+            {{ form_label(f.time)}}:
+            {{ form_widget(f.time, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(f.time) }}
+
+            {{ form_label(f.Jmax)}}:
+            {{ form_widget(f.Jmax, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(f.Jmax) }}
+
+            {{ form_label(f.etat)}}:
+            {{ form_widget(f.etat, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(f.etat) }}
+        </div>
+        <div style="hidden=">
+            {{ form_widget(f._token) }}
+        </div>
+        <div class="form-group d-flex mt-4">
+            <button  class="btn btn-primary">{{ button_label|default('Modifer') }}</button>
+        </div>
+    </div>
+{% endblock %}

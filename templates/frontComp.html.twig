@@ -67,9 +67,8 @@
                                                     <li class="active"><a href="index.html">Home</a></li>
                                                     <li><a href="about.html">About</a></li>
                                                     <li><a href="team.html">Team</a></li>
-                                                    <li><a href="news.html">News</a></li>
                                                     <li class="dropdown mega-dropdown">
-                                                        <a href="match" class="dropdown-toggle" data-toggle="dropdown">Match<span class="caret"></span></a>
+                                                        <a href="TODO" class="dropdown-toggle" data-toggle="dropdown">News<span class="caret"></span></a>
                                                         <ul class="dropdown-menu mega-dropdown-menu">
                                                             <li class="col-sm-8">
                                                                 <ul>
@@ -118,7 +117,8 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="{{ path('match_view') }}">Matches</a></li>
+                                                    <li><a href="{{ path("show_tournoi") }}">Tournois</a></li>
                                                     <li><a href="contact.html">contact</a></li>
                                                 </ul>
                                             </div>
@@ -236,7 +236,7 @@
                     <div class="full">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="#"><img src="images/footer-logo.png" alt="#" /></a>
+                                <a href="#"><img src="{{ asset('Front/assets/images/footer-logo.png') }}" alt="#" /></a>
                             </div>
                             <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
                             <ul class="social-icons style-4 pull-left">

@@ -391,6 +391,11 @@
      box-shadow:0 0 0;
      border-color:#ccc;
 }
+
+ .form-group .form-control{
+     width: 40%;
+ }
+
  .stylish-input-group button{
      border:0;
      background:transparent;
