@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+
+        <!-- Basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- Site Metas -->
+        <title>Game Info</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+        <!-- Site Icons -->
+        <link rel="shortcut icon" href="" type="{{ asset('front/assets/image/x-icon') }}" />
+        <link rel="apple-touch-icon" href="">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap.min.css') }}">
+        <!-- Site CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/style.css') }}">
+        <!-- Colors CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/colors.css') }}">
+        <!-- ALL VERSION CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/versions.cs') }}s">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/responsive.css') }}">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/custom.css') }}">
+        <!-- font family -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <!-- end font family -->
+        <link rel="stylesheet" href="{{ asset('front/assets/css/3dslider.css') }}" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <script src="{{ asset('front/assets/js/3dslider.js') }}"></script>
+        {% endblock %}
+
+        {% block javascripts %}
+            <!-- ALL JS FILES -->
+            <script src="{{ asset('front/assets/js/all.js') }}"></script>
+            <!-- ALL PLUGINS -->
+            <script src="{{ asset('front/assets/js/custom.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
