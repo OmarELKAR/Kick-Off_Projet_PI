@@ -1,14 +1,16 @@
 {% extends "baseF.html.twig" %}
 
 {% block body %}
+
     <body class="game_info" data-spy="scroll" data-target=".header">
+
     <!-- LOADER -->
     <div id="preloader">
         <img class="preloader" src="{{ asset('front/assets/images/loading-img.gif') }}" alt="">
     </div>
     <!-- END LOADER -->
 
-    <section id="top">
+    <section id="top" style="float:none">
         <header>
             <div class="container">
                 <div class="header-top">
@@ -32,7 +34,7 @@
                                 <!-- end social icon -->
                                 <!-- button section -->
                                 {% if app.user %}
-                                    <div class="mb-3">
+                                    <div class="mb-3" href="#">
                                         {{ app.user.username }}
                                         <li>
                                             <div class="cart-option">
@@ -237,9 +239,14 @@
             </div>
         </div>
     </section>
+    <div style="position: relative;" class="rs">
+        <div style="position: absolute; background-image: linear-gradient(to bottom right, greenyellow,yellow,greenyellow); filter: blur(30px); height: 100%;width: 100%; ">
+        </div>
 
+        <div class="rc" style="position: absolute;z-index: 2;">
     {% block main %} {% endblock %}
-
+</div>
+    </div>
     <footer id="footer" class="footer">
         <div class="container">
             <div class="row">
@@ -303,5 +310,13 @@
     </footer>
 
     </body>
+    <script>
+        function rh(){
+            divHeight = $('.rc').height();
+            $('.rs').css({'height' : divHeight});
+            console.log(divHeight)
+        }
+        rh();
 
+    </script>
 {% endblock %}

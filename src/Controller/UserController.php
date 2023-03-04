@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 use App\Entity\User;
+use App\Form\RegistrationFormType;
+use App\Form\UpdateFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -33,10 +38,24 @@ class UserController extends AbstractController
             $doctrine->getManager()->flush();
         return $this->RedirecttoRoute("app_user");
     }
-    public function update(ManagerRegistry $doctrine, $id): Response
+    #[Route('/user/update/', name: 'app_user_update')]
+    public function update(Request $request, ManagerRegistry $doctrine , EntityManagerInterface $entityManager): Response
     {
-        $user = $doctrine->getRepository(User::class)->find($id);
 
+        $id = $this->getUser()->getId();
+        $user = $doctrine->getRepository(User::class)->find($id);
+        $form = $this->createForm(UpdateFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("app_testF");
+        }
+        return $this->render('user/update.html.twig',[
+        'updateForm' => $form->createView(),
+         ['user'=>$user],
+        ]);
     }
 
 }

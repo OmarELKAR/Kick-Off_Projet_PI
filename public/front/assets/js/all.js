@@ -109,7 +109,7 @@ function(a,b,c,d){var e=function(b){this._core=b,this._timeout=null,this._paused
 		    }
 		})
 
-		$('.owl-services').owlCarousel({
+		$('.owl-Service').owlCarousel({
            loop:false,
             margin:30,
             dots:false,

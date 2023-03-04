@@ -1,0 +1,16 @@
+{% extends 'frontComp.html.twig' %}
+
+{% block main %}
+    <div class="w-4/5 m-auto text-center container mt-2 md-2">
+    {{ form_start(updateForm) }}
+    {{  form_row(updateForm.username, {'class':'form-control'}) }}
+    {{ form_row(updateForm.email, {'class':'form-control'}) }}
+    <!--{{ form_row(updateForm.New_Password, {'class':'form-control'}) }} -->
+     <!-- {{ form_row(updateForm.Confirm_New_Password, {'class':'form-control'}) }} -->
+    <button type="submit"
+            class="uppercase btn btn-primary mt-3">
+        Update
+    </button>
+    {{ form_end(updateForm) }}
+    </div>
+{% endblock %}

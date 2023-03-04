@@ -1,3 +1,8 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+user_add:
+  path: /api/users
+  methods: ['POST']
+  controller: App\Controller\UserApiController::AddUser

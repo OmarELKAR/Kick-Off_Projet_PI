@@ -3,6 +3,20 @@
 {% block title %}Log in!{% endblock %}
 
 {% block main %}
+<style>
+    .rc{
+          right:0;left:0;margin:auto; background-color: rgba(0,0,0,0.1);
+    }
+    .form-control{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn{
+        float: none;
+        background-color: blue;
+    }
+</style>
     <form method="post" novalidate>
 
         <div class="w-4/5 m-auto text-center">
@@ -49,11 +63,15 @@
                 >
 <br>
                 <button
-                        class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg w-1/5 mt-10 font-extrabold py-4 px-8 rounded-3xl"
+                        class="  btn btn-primary"
                         type="submit">
                     Sign in
                 </button>
+
+                <p> Did you forget your password ?<a href="{{ path('app_forgot_password_request') }}"> click here to reset.</a></p>
+
     </div>
     </div>
     </form>
+
 {% endblock %}
